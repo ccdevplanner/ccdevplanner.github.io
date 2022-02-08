@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CyberChill Development Planner</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+<style>
+body {margin:0px;background-color:rgb(30,30,30)	;}
+* {box-sizing:border-box;outline:none;cursor:url(cursor.cur),auto;}
+#content {border:3px solid black;bottom:0px;left:0%;right:20%;position:absolute;top:100px;overflow:auto;}
+#menu {border-left:3px solid black;border-right:3px solid black;height:500px;left:80%;right:0%;position:absolute;top:153px;background-color:#757575;border-top:none;overflow:auto;}
+.menuSpan {color:white;font-weight:bold;font-family:arial;left:5%;right:5%;position:absolute;text-align:center;}
+input {width:100%;position:absolute;background-color:#0cc0bd;text-align:center;font-weight:bold;font-family:arial;font-size:20px;height:25px;top:25px;border:none;}
+.hexColor {top:60px;position:absolute;left:5%;right:5%;text-align:center;font-weight:bold;font-family:arial;color:#58DAB3;font-size:20px;}
+.menuDiv {position:relative;height:80px;}
+textarea {width:100%;max-width:100%;min-width:100%;height:300px;min-height:300px;max-height:300px;font-weight:bold;font-family:arial;font-size:20px;height:25px;top:25px;border:none;background-color:#0cc0bd;}
+#lockStyles {top:0px;position:relative;background-color:#0c5a58;border:none;width:100%;text-align:center;}
+#menuBackground {border:3px solid black;bottom:0px;left:80%;right:0%;position:absolute;top:100px;background-color:#757575;}
+#insert,#fileButton {width:100%;position:absolute;background-color:#0cc0bd;text-align:center;font-weight:bold;font-family:arial;font-size:20px;height:25px;border:none;border-bottom:3px solid black;}
+#logo {width:130px;height:100px;top:0px;left:0px;position:absolute;}
+#advert {width:100px;height:100px;top:0px;right:0px;position:absolute;}
+#title {left:130px;right:100px;position:absolute;text-align:center;font-size:70px;top:-47px;font-family:arial;background-color:#323232;color:#a80000;height:100px;}
+#insert {top:0px;}
+#fileButton {top:25px;}
+#files {position:absolute;left:10%;right:10%;background-color:rgb(97,2,116,0.5);height:4800px;top:200px;border-radius:50px;}
+#filesTitle {text-align:center;font-size:60px;font-family:arial;top:-50px;position:relative;color:white;font-weight:bold;}
+.file {text-align:center;font-size:30px;font-family:arial;top:-100px;position:relative;color:#bf1d1d;font-weight:bold;background-color:rgb(20,8,79,0.8);}
+#fileMenu {position:absolute;left:10%;right:10%;background-color:rgb(97,2,116);height:4800px;top:25px;border-radius:50px;}
+#fileMenuTitle {text-align:center;font-size:60px;font-family:arial;top:-50px;position:relative;color:white;font-weight:bold;}
+a {text-decoration:none;}
+#saveAs {text-align:center;font-size:30px;font-family:arial;top:400px;position:relative;color:#1F7FFF;font-weight:bold;background-color:rgb(40,8,39,0.8);}
+#saveAsMenu {position:absolute;left:10%;right:10%;background-color:rgb(97,2,116);height:4800px;top:50px;border-radius:50px;}
+.file::placeholder {color:rgb(150,50,0);}
+#saveAsButton {text-align:center;font-size:30px;font-family:arial;top:100px;position:relative;color:#1F7FFF;font-weight:bold;background-color:rgb(40,8,39,0.8);}
+#filesList {width:100%;position:absolute;height:500px;overflow:auto;top:80px;}
+#closeFilesMenu {background-color:black;color:red;position:absolute;right:0px;top:0px;width:80px;height:80px;border-top-right-radius:50px;border:none;font-family:arial;font-size:30px;padding:15px;}
+#closeSaveAsMenu {background-color:black;color:red;position:absolute;right:0px;top:0px;width:80px;height:80px;border-top-right-radius:50px;border:none;font-family:arial;font-size:30px;padding:15px;}
+#closeFileMenu {background-color:black;color:red;position:absolute;right:0px;top:0px;width:80px;height:80px;border-top-right-radius:50px;border:none;font-family:arial;font-size:30px;padding:15px;}
+.data {text-align:center;font-size:30px;font-family:arial;top:-100px;position:relative;color:#bf1d1d;font-weight:bold;background-color:#4c4c7b;height:150px;padding-top:10px;}
+.removeBtn {font-size:30px;position:relative;top:-330px;background-color:black;color:red;border:none;position:relative;right:0px;width:50px;height:50px;left:100%;margin-left:-50px;}
+#fileTitle {text-align:center;font-size:40px;font-family:arial;top:0px;position:relative;color:white;font-weight:bold;background-color:rgb(255,255,255,0.1)}
+</style>
+</head>
+<body>
+<img id="logo" src="logo.png">
+<a href="https://www.roblox.com/games/5012201557" id="advert"><img style="width:100%;height:100%;position:absolute" src="advert1.png"></a>
+<h1 id="title">CyberChill Development Planner</h1>
+<div id="content" onclick="menu(this)">
+<p id="fileTitle" contenteditable="true">Untitled</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+<div id="menuBackground">
+<button id="insert" onclick="insert()">Insert data</button>
+<button id="fileButton" onclick="filesMenu()">File</button>
+</div>
+<div id="files" style="display:none;">
+<p id="filesTitle">Files</p>
+<button id="closeFilesMenu" onclick="closeMenu(this.parentElement)">X</button>
+<div id="filesList">
+<a href="#title"><p class="file" onclick="fileMenu(this.innerHTML)">this is a test file</p></a>
+<a href="#title"><p class="file" onclick="fileMenu(this.innerHTML)">this is a test file (2)</p></a>
+<a href="#title"><p class="file" onclick="fileMenu(this.innerHTML)">this is a test file (3)</p></a>
+</div>
+<p id="saveAs" onclick="saveAs()">Save Current File</p>
+<div id="fileMenu" style="display:none;">
+<p id="fileMenuTitle"></p>
+<button id="closeFileMenu" onclick="closeMenu(this.parentElement)">X</button>
+<p class="file" onclick="fileSave()" style="top:-50px;">Save</p>
+<p class="file" onclick="fileLoad()" style="top:-50px;">Load</p>
+<p class="file" onclick="fileRemove()" style="top:-50px;">Remove</p>
+</div>
+<div id="saveAsMenu" style="display:none;">
+<button id="closeSaveAsMenu" onclick="closeMenu(this.parentElement)">X</button>
+<p id="saveAsButton" onclick="saveAs()">Save</p>
+</div>
+<script>
+function filesMenu() {
+document.getElementById("files").style.display = "block";
+}
+
+function closeMenu(m) {
+m.style.display = "none";
+}
+
+function fileMenu(f) {
+document.getElementById("fileMenu").style.display = "block";
+document.getElementById("fileMenuTitle").innerHTML = f;
+}
+
+function setUp() {
+localStorage.ccdevelopmentplannernames = ""
+localStorage.ccdevelopmentplannerfiles= ""
+}
+
+function saveAsMenu() {
+document.getElementById("saveAsMenu").style.display = "block";
+}
+
+function fileLoad() {
+var c = document.getElementById("fileMenuTitle").innerHTML
+var f = document.getElementById("content")
+var names = localStorage.ccdevelopmentplannernames
+names = names.split("##ccdevelopmentplanner##")
+var files = localStorage.ccdevelopmentplannerfiles
+files = files.split("##ccdevelopmentplanner##")
+if(names.indexOf(c) != -1) {
+var i = names.indexOf(c)
+while(files[i] == "") {
+i = i + 1
+}
+f.innerHTML = files[i];
+document.getElementById("fileMenu").style.display = "none";
+document.getElementById("object").value = ""
+}
+else {
+alert("That file doesn't exist!")
+}
+}
+
+function fileSave() {
+var c = document.getElementById("fileMenuTitle").innerHTML
+var f = document.getElementById("content")
+var names = localStorage.ccdevelopmentplannernames
+names = names.split("##ccdevelopmentplanner##")
+var files = localStorage.ccdevelopmentplannerfiles
+files = files.split("##ccdevelopmentplanner##")
+if(names.indexOf(c) != -1) {
+if(document.getElementById("fileTitle").innerHTML != c && names.indexOf(document.getElementById("fileTitle").innerHTML) != -1) {
+alert("That file name is already taken!")
+document.getElementById("fileMenu").style.display = "none";
+}
+else {
+files[names.indexOf(c)] = f.innerHTML;
+names[names.indexOf(c)] = document.getElementById("fileTitle").innerHTML;
+document.getElementById("fileMenu").style.display = "none";
+var i = 0;
+localStorage.ccdevelopmentplannerfiles= ""
+localStorage.ccdevelopmentplannernames= ""
+while(i < names.length) {
+localStorage.ccdevelopmentplannerfiles+= files[i] + "##ccdevelopmentplanner##"
+localStorage.ccdevelopmentplannernames+= names[i] + "##ccdevelopmentplanner##"
+i += 1
+}
+}
+}
+else {
+alert("That file doesn't exist!")
+}
+refreshFiles()
+}
+
+function fileRemove() {
+var c = document.getElementById("fileMenuTitle").innerHTML
+var f = document.getElementById("content")
+var names = localStorage.ccdevelopmentplannernames
+names = names.split("##ccdevelopmentplanner##")
+var files = localStorage.ccdevelopmentplannerfiles
+files = files.split("##ccdevelopmentplanner##")
+if(names.indexOf(c) != -1) {
+names[names.indexOf(c)] = "##deleted##";
+files[names.indexOf(c)] = "##deleted##";
+document.getElementById("fileMenu").style.display = "none";
+var i = 0;
+localStorage.ccdevelopmentplannerfiles= ""
+localStorage.ccdevelopmentplannernames = ""
+while(i < names.length) {
+localStorage.ccdevelopmentplannerfiles+= files[i] + "##ccdevelopmentplanner##"
+localStorage.ccdevelopmentplannernames += names[i] + "##ccdevelopmentplanner##"
+i += 1
+}
+}
+else {
+alert("That file doesn't exist!")
+}
+refreshFiles()
+}
+
+function saveAs() {
+var n = document.getElementById("fileTitle").innerHTML;
+var f = document.getElementById("content")
+var names = localStorage.ccdevelopmentplannernames
+names = names.split("##ccdevelopmentplanner##")
+if(names.indexOf(n) == -1) {
+localStorage.ccdevelopmentplannernames += n + "##ccdevelopmentplanner##"
+localStorage.ccdevelopmentplannerfiles+= f.innerHTML + "##ccdevelopmentplanner##"
+}
+else {
+alert("This file already exists!")
+}
+
+document.getElementById("saveAsMenu").style.display = "none";
+
+refreshFiles()
+
+}
+function refreshFiles() {
+var f = document.getElementById("content");
+var names = localStorage.ccdevelopmentplannernames;
+var filesList = document.getElementById("filesList");
+names = names.split("##ccdevelopmentplanner##");
+var i = 0;
+filesList.innerHTML = ""
+while(i < names.length) {
+if(names[i] != "##deleted##") {
+filesList.innerHTML = filesList.innerHTML + '<a href="#title"><p class="file" onclick="fileMenu(this.innerHTML)" style="top:10px;">'+names[i]+'</p></a>';
+}
+i += 1
+}
+}
+
+
+if(localStorage.getItem('ccdevelopmentplannernames') == null) {
+setUp()
+refreshFiles()
+}
+else {
+refreshFiles()
+}
+</script>
+</div>
+<script>
+function insert() {
+document.getElementById("content").innerHTML += '<div style="top:0px;position:relative;height:200px;"><p class="data" contenteditable="true"></p><button class="removeBtn" onclick="this.parentElement.remove();">X</button><br><br><br><br><br><br><br></div>'
+}
+</script>
+</body>
+</html>
